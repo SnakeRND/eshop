@@ -64,8 +64,6 @@ abstract class BaseController
             $path = TEMPLATE . explode('controller', strtolower((new \ReflectionClass($this))->getShortName()))[0];
         }
 
-        exit();
-
         ob_start();
 
         if(!@include_once $path . '.php') throw new RouteException('Отсутствует шаблон -'.$path);

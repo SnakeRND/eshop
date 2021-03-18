@@ -71,75 +71,50 @@ class RouteController extends BaseController
 
                     $hrUrl = $this->routes['plugins']['hrUrl'];
                     $route = 'plugins';
-
                 }else{
-
                     $this->controller = $this->routes['admin']['path'];
                     $hrUrl = $this->routes['admin']['hrUrl'];
                     $route = 'admin';
-
                 }
             }else{
-
                 $hrUrl = $this->routes['user']['hrUrl'];
-
                 $this->controller = $this->routes['user']['path'];
-
                 $route = 'user';
-
             }
 
             $this->createRoute($route, $url);
 
-            if($url[1]){
-
+            if($url[0]){
                 $count = count($url);
                 $key = '';
-
                 if(!$hrUrl){
-
                     $i = 1;
-
                 }else{
-
-                    $this->parameters['alias'] = $url[1];
+                    $this->parameters['alias'] = $url[0];
                     $i = 2;
-
                 }
-
                 for( ; $i < $count; $i++){
-
                     if(!$key){
-
                         $key = $url[$i];
                         $this->parameters[$key] = '';
-
                     }else{
-
                         $this->parameters[$key] = $url[$i];
                         $key = '';
-
                     }
-
                 }
-
             }
-
-            exit();
 
         }else{
             try {
-
                 throw new \Exception('Некорректная директория сайта');
-
             }
 
             catch (\Exception $e){
                 exit($e->getMessage());
-
             }
         }
     }
+
     private function createRoute($var, $arr){
 
         $route = [];

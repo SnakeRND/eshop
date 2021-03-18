@@ -76,7 +76,7 @@ class Settings
 
             if(is_array($property) && is_array($item)){
 
-                $baseProperties = $this->arrayMergeRecursive($this->$name, $property);
+                $baseProperties[$name] = $this->arrayMergeRecursive($this->$name, $property);
                 continue;
 
             }

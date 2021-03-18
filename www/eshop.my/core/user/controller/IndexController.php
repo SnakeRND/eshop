@@ -8,6 +8,7 @@ class IndexController extends BaseController {
 
     protected function inputData(){
         $template = $this->render(false, ['name' => 'Jon Snow']);
+        exit($template);
     }
 
 }

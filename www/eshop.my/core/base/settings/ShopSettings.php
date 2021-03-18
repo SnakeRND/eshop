@@ -10,15 +10,23 @@ class ShopSettings
     private $baseSettings;
 
     private $routes = [
+        'admin' => [
+            'alias' => 'admin',
+            'path' => 'core/admin/controller/',
+            'hrUrl' => false,
+            'routes' => [],
+        ],
+
         'plugins' => [
             'path' => 'core/plugins/',
             'hrUrl' => false,
-            'dir' => false
+            'dir' => 'controller',
+            'routes' => [],
         ],
     ];
 
     private $templateArr = [
-        'text' => ['price', 'short'],
+        'text' => ['price', 'short', 'name'],
         'textarea' => ['goods_content']
     ];
 
@@ -37,8 +45,9 @@ class ShopSettings
 
         self::$_instance = new self;
         self::$_instance->baseSettings = Settings::instance();
-        $baseProperties = self::instance()->baseSettings->clueProperties(get_class());
+        $baseProperties = self::$_instance->baseSettings->clueProperties(get_class());
         self::$_instance->setProperty($baseProperties);
+
         return self::$_instance;
 
     }
